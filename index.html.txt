@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>श्रेयांश होममेड लाडू - ऑनलाईन स्टोअर</title>
+    <!-- Google Fonts for better look -->
+    <link href="https://googleapis.com" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #0b4f4f; /* Premium Dark Teal */
+            --accent-color: #d4af37; /* Elegant Gold */
+            --text-light: #ffffff;
+            --bg-light: #f4f7f6;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-light);
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        .header {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            text-align: center;
+            padding: 30px 15px;
+            border-bottom: 5px solid var(--accent-color);
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .header p {
+            margin: 5px 0 0 0;
+            color: var(--accent-color);
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 30px auto;
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            border: 1px solid #e0e0e0;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--primary-color);
+        }
+
+        select, input[type="number"], .radio-group {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            font-size: 1rem;
+            box-sizing: border-box;
+            transition: all 0.3s;
+        }
+
+        select:focus, input:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+
+        .radio-box {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .radio-option {
+            flex: 1;
+            text-align: center;
+        }
+
+        .radio-option input[type="radio"] {
+            display: none;
+        }
+
+        .radio-option label {
+            display: block;
+            background: #fff;
+            border: 2px solid #ccc;
+            padding: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 400;
+        }
+
+        .radio-option input[type="radio"]:checked + label {
+            background: var(--primary-color);
+            color: var(--text-light);
+            border-color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .bill-summary {
+            background: #eef5f4;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 25px;
+            border-left: 5px solid var(--primary-color);
+        }
+
+        .bill-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 1.05rem;
+        }
+
+        .bill-row.total {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            border-top: 2px dashed #ccc;
+            padding-top: 10px;
+            margin-top: 10px;
+        }
+
+        .btn-whatsapp {
+            display: block;
+            width: 100%;
+            background-color: #25d366;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+            margin-top: 20px;
+            transition: background 0.3s;
+            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #1ebe57;
+        }
+
+        .footer-text {
+            text-align: center;
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>श्री स्वामी समर्थ</h1>
+        <p>श्रेयांश होममेड लाडू (घरगुती लाडू, घरगुती चव)</p>
+    </div>
+
+    <div class="container">
+        <!-- Ladoo Selection -->
+        <div class="form-group">
+            <label for="ladooType">१. लाडूचा प्रकार निवडा (Ladoo Type):</label>
+            <select id="ladooType" onchange="calculateBill()">
+                <option value="jaggery">🟤 पारंपरिक गुळाचे लाडू</option>
+                <option value="sugar">🟡 साखरेचे लाडू</option>
+                <option value="dates">🟤 खजुराचे डायट लाडू (Sugar-Free)</option>
+                <option value="honey">🍯 मधाचे शेंगा लाडू</option>
+                <option value="coconut">🥥 खोबरे-शेंगा लाडू</option>
+                <option value="dryfruit">🦚 स्पेशल ड्रायफ्रूट लाडू</option>
+            </select>
+        </div>
+
+        <!-- Weight Selection -->
+        <div class="form-group">
+            <label>२. पॅकिंग वजन निवडा (Weight):</label>
+            <div class="radio-box">
+                <div class="radio-option">
+                    <input type="radio" id="w250" name="weight" value="250g" onchange="calculateBill()">
+                    <label for="w250">२५० ग्रॅम</label>
+                </div>
+                <div class="radio-option">
+                    <input type="radio" id="w500" name="weight" value="500g" checked onchange="calculateBill()">
+                    <label for="w500">५०० ग्रॅम</label>
+                </div>
+                <div class="radio-option">
+                    <input type="radio" id="w1kg" name="weight" value="1kg" onchange="calculateBill()">
+                    <label for="w1kg">१ किलो</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quantity Selection -->
+        <div class="form-group">
+            <label for="quantity">३. डब्यांची संख्या (Quantity):</label>
+            <input type="number" id="quantity" min="1" max="100" value="1" oninput="calculateBill()">
+        </div>
+
+        <!-- Delivery Location Selection -->
+        <div class="form-group">
+            <label for="deliveryLocation">४. डिलिव्हरी कुठे हवी आहे? (Location):</label>
+            <select id="deliveryLocation" onchange="calculateBill()">
+                <option value="local">📍 अक्कलकोट स्थानिक (Free Delivery)</option>
+                <option value="maharashtra">🚚 महाराष्ट्र अंतर्गत (₹६० कुरिअर चार्ज)</option>
+                <option value="outside">✈️ महाराष्ट्राबाहेर इतर राज्ये (₹१२० कुरिअर चार्ज)</option>
+            </select>
+        </div>
+
+        <!-- Bill Invoice Summary -->
+        <div class="bill-summary">
+            <div class="bill-row">
+                <span>प्रति डबा किंमत (Rate per Box):</span>
+                <span id="ratePerBox">₹ ००</span>
+            </div>
+            <div class="bill-row">
+                <span>लाडूची एकूण किंमत (Items Total):</span>
+                <span id="itemsTotal">₹ ००</span>
+            </div>
+            <div class="bill-row">
+                <span>डिलिव्हरी शुल्क (Shipping Cost):</span>
+                <span id="shippingCost">₹ ००</span>
+            </div>
+            <div class="bill-row total">
+                <span>एकूण देय रक्कम (Grand Total):</span>
+                <span id="grandTotal">₹ ००</span>
+            </div>
+        </div>
+
+        <!-- Order Button -->
+        <button class="btn-whatsapp" onclick="sendWhatsAppOrder()">📱 व्हॉट्सॲपवर ऑर्डर करा (Order via WhatsApp)</button>
+        
+        <div class="footer-text">
+            पत्ता: अक्कलकोट | संपर्क: ७४४७२७३२२६ | Home Delivery Available
+        </div>
+    </div>
+
+    <script>
+        // Prices database updated as per latest corrections
+        const priceList = {
+            jaggery: { "1kg": 349, "500g": 189, "250g": 99 },
+            sugar:   { "1kg": 339, "500g": 169, "250g": 89 },
+            dates:   { "1kg": 449, "500g": 249, "250g": 199 },
+            honey:   { "1kg": 479, "500g": 249, "250g": 219 },
+            coconut: { "1kg": 379, "500g": 229, "250g": 149 },
+            dryfruit:{ "1kg": 549, "500g": 299, "250g": 169 }
+        };
+
+        function calculateBill() {
+            const ladooType = document.getElementById('ladooType').value;
+            const weight = document.querySelector('input[name="weight"]:checked').value;
+            const quantity = parseInt(document.getElementById('quantity').value) || 1;
+            const location = document.getElementById('deliveryLocation').value;
+
+            // 1. Get Rate
+            const rate = priceList[ladooType][weight];
+            
+            // 2. Calculations
+            const itemsTotal = rate * quantity;
+            
+            let shipping = 0;
+            if (location === 'maharashtra') shipping = 60;
+            if (location === 'outside') shipping = 120;
+            
+            const grandTotal = itemsTotal + shipping;
+
+            // 3. Update Display UI
+            document.getElementById('ratePerBox').innerText = "₹ " + rate;
+            document.getElementById('itemsTotal').innerText = "₹ " + itemsTotal;
+            document.getElementById('shippingCost').innerText = "₹ " + shipping;
+            document.getElementById('grandTotal').innerText = "₹ " + grandTotal;
+        }
+
+        function sendWhatsAppOrder() {
+            const ladooSelect = document.getElementById('ladooType');
+            const ladooName = ladooSelect.options[ladooSelect.selectedIndex].text;
+            const weight = document.querySelector('input[name="weight"]:checked').value;
+            const quantity = document.getElementById('quantity').value;
