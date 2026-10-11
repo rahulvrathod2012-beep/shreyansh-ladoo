@@ -4,12 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>श्रेयांश होममेड लाडू - ऑनलाईन स्टोअर</title>
-    <!-- Google Fonts for better look -->
     <link href="https://googleapis.com" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #0b4f4f; /* Premium Dark Teal */
-            --accent-color: #d4af37; /* Elegant Gold */
+            --primary-color: #0b4f4f;
+            --accent-color: #d4af37;
             --text-light: #ffffff;
             --bg-light: #f4f7f6;
         }
@@ -26,144 +25,53 @@
             background-color: var(--primary-color);
             color: var(--text-light);
             text-align: center;
-            padding: 30px 15px;
+            padding: 25px 15px;
             border-bottom: 5px solid var(--accent-color);
         }
 
-        .header h1 {
-            margin: 0;
-            font-size: 2.2rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-        }
-
-        .header p {
-            margin: 5px 0 0 0;
-            color: var(--accent-color);
-            font-size: 1.1rem;
-            font-weight: 600;
-        }
+        .header h1 { margin: 0; font-size: 2rem; font-weight: 700; }
+        .header p { margin: 5px 0 0 0; color: var(--accent-color); font-size: 1.1rem; font-weight: 600; }
 
         .container {
-            max-width: 600px;
-            margin: 30px auto;
+            max-width: 500px;
+            margin: 20px auto;
             background: #ffffff;
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-            border: 1px solid #e0e0e0;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        label {
-            display: block;
-            font-weight: 600;
-            margin-bottom: 8px;
-            color: var(--primary-color);
-        }
-
-        select, input[type="number"], .radio-group {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid #ccc;
-            border-radius: 8px;
-            font-size: 1rem;
-            box-sizing: border-box;
-            transition: all 0.3s;
-        }
-
-        select:focus, input:focus {
-            border-color: var(--primary-color);
-            outline: none;
-        }
-
-        .radio-box {
-            display: flex;
-            justify-content: space-between;
-            gap: 10px;
-        }
-
-        .radio-option {
-            flex: 1;
-            text-align: center;
-        }
-
-        .radio-option input[type="radio"] {
-            display: none;
-        }
-
-        .radio-option label {
-            display: block;
-            background: #fff;
-            border: 2px solid #ccc;
-            padding: 10px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 400;
-        }
-
-        .radio-option input[type="radio"]:checked + label {
-            background: var(--primary-color);
-            color: var(--text-light);
-            border-color: var(--primary-color);
-            font-weight: 600;
-        }
-
-        .bill-summary {
-            background: #eef5f4;
             padding: 20px;
-            border-radius: 8px;
-            margin-top: 25px;
-            border-left: 5px solid var(--primary-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            box-sizing: border-box;
         }
 
-        .bill-row {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-            font-size: 1.05rem;
+        .form-group { margin-bottom: 18px; }
+        label { display: block; font-weight: 600; margin-bottom: 8px; color: var(--primary-color); }
+        select, input[type="text"], input[type="number"], .radio-box {
+            width: 100%; padding: 12px; border: 2px solid #ccc; border-radius: 8px; font-size: 1rem; box-sizing: border-box;
         }
 
-        .bill-row.total {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            border-top: 2px dashed #ccc;
-            padding-top: 10px;
-            margin-top: 10px;
+        .radio-box { display: flex; justify-content: space-between; gap: 8px; border: none; padding: 0; }
+        .radio-option { flex: 1; text-align: center; }
+        .radio-option input[type="radio"] { display: none; }
+        .radio-option label { display: block; background: #fff; border: 2px solid #ccc; padding: 10px 5px; border-radius: 8px; cursor: pointer; font-size: 0.95rem; }
+        .radio-option input[type="radio"]:checked + label { background: var(--primary-color); color: var(--text-light); border-color: var(--primary-color); font-weight: 600; }
+
+        .bill-summary { background: #eef5f4; padding: 15px; border-radius: 8px; margin-top: 20px; border-left: 5px solid var(--primary-color); }
+        .bill-row { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 1rem; }
+        .bill-row.total { font-size: 1.25rem; font-weight: 700; color: var(--primary-color); border-top: 2px dashed #ccc; padding-top: 8px; margin-top: 8px; }
+
+        .payment-box {
+            background: #fff8e7; border: 2px dashed var(--accent-color); padding: 15px; border-radius: 8px; margin-top: 20px; text-align: center;
+        }
+        .payment-btn {
+            background-color: #5f259f; color: white; border: none; padding: 12px 20px; font-weight: bold; border-radius: 8px; cursor: pointer; margin-top: 10px; display: inline-block; text-decoration: none; box-shadow: 0 4px 8px rgba(95, 37, 159, 0.2);
         }
 
-        .btn-whatsapp {
-            display: block;
-            width: 100%;
-            background-color: #25d366;
-            color: white;
-            text-align: center;
-            padding: 15px;
-            border: none;
-            border-radius: 8px;
-            font-size: 1.2rem;
-            font-weight: 700;
-            cursor: pointer;
-            text-decoration: none;
-            margin-top: 20px;
-            transition: background 0.3s;
-            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+        .btn-submit {
+            display: block; width: 100%; background-color: #25d366; color: white; text-align: center; padding: 14px; border: none; border-radius: 8px; font-size: 1.15rem; font-weight: 700; cursor: pointer; margin-top: 15px; box-shadow: 0 4px 8px rgba(37, 211, 102, 0.2);
         }
+        .btn-submit:disabled { background-color: #cccccc; cursor: not-allowed; box-shadow: none; }
 
-        .btn-whatsapp:hover {
-            background-color: #1ebe57;
-        }
-
-        .footer-text {
-            text-align: center;
-            font-size: 0.9rem;
-            color: #666;
-            margin-top: 20px;
-        }
+        .success-box { display: none; background-color: #d4edda; color: #155724; padding: 15px; border-radius: 8px; border: 1px solid #c3e6cb; margin-bottom: 15px; text-align: center; font-weight: 600; }
+        .footer-text { text-align: center; font-size: 0.85rem; color: #666; margin-top: 15px; }
     </style>
 </head>
 <body>
@@ -174,6 +82,17 @@
     </div>
 
     <div class="container">
+        <div id="successMessage" class="success-box">
+            ✅ तुमची ऑर्डर यशस्वीरित्या नोंदवली गेली आहे! (Order Placed!) <br>
+            बिल पडताळणीसाठी व्हॉट्सॲपवर अंतिम तपशील पाठवले जात आहेत...
+        </div>
+
+        <!-- Customer Name -->
+        <div class="form-group">
+            <label for="custName">ग्राहक नाव (Customer Name):</label>
+            <input type="text" id="custName" placeholder="तुमचे नाव टाका">
+        </div>
+
         <!-- Ladoo Selection -->
         <div class="form-group">
             <label for="ladooType">१. लाडूचा प्रकार निवडा (Ladoo Type):</label>
@@ -217,41 +136,56 @@
             <label for="deliveryLocation">४. डिलिव्हरी कुठे हवी आहे? (Location):</label>
             <select id="deliveryLocation" onchange="calculateBill()">
                 <option value="local">📍 अक्कलकोट स्थानिक (Free Delivery)</option>
-                <option value="maharashtra">🚚 महाराष्ट्र अंतर्गत (₹६० कुरिअर चार्ज)</option>
-                <option value="outside">✈️ महाराष्ट्राबाहेर इतर राज्ये (₹१२० कुरिअर चार्ज)</option>
+                <option value="maharashtra">🚚 महाराष्ट्र अंतर्गत (₹६० कुरिअर充)</option>
+                <option value="outside">✈️ महाराष्ट्राबाहेर इतर राज्ये (₹१२० कुरिअर)</option>
             </select>
         </div>
 
-        <!-- Bill Invoice Summary -->
+        <!-- Bill Summary -->
         <div class="bill-summary">
             <div class="bill-row">
-                <span>प्रति डबा किंमत (Rate per Box):</span>
-                <span id="ratePerBox">₹ ००</span>
+                <span>प्रति डबा किंमत (Rate):</span>
+                <span id="ratePerBox">₹ ०</span>
             </div>
             <div class="bill-row">
-                <span>लाडूची एकूण किंमत (Items Total):</span>
-                <span id="itemsTotal">₹ ००</span>
+                <span>लाडूची एकूण किंमत (Total):</span>
+                <span id="itemsTotal">₹ ०</span>
             </div>
             <div class="bill-row">
-                <span>डिलिव्हरी शुल्क (Shipping Cost):</span>
-                <span id="shippingCost">₹ ००</span>
+                <span>डिलिव्हरी शुल्क (Shipping):</span>
+                <span id="shippingCost">₹ ०</span>
             </div>
             <div class="bill-row total">
                 <span>एकूण देय रक्कम (Grand Total):</span>
-                <span id="grandTotal">₹ ००</span>
+                <span id="grandTotal">₹ ०</span>
+            </div>
+        </div>
+
+        <!-- Advance Payment Box -->
+        <div class="payment-box">
+            <h3 style="margin:0; color:#5f259f;">🟣 ५. ऑनलाईन पेमेंट (Pay to Shreyansh Ladoo)</h3>
+            <p style="font-size:0.9rem; margin:8px 0;">ऑर्डर निश्चित करण्यासाठी खालील बटणावर क्लिक करून PhonePe/GPay द्वारे पैसे भरा आणि **Transaction ID** खाली टाका.</p>
+            
+            <!-- Secure Direct UPI Link with dynamically calculated amount -->
+            <a id="upiLink" href="upi://pay?pa=74472732@axl&pn=Shreyansh%20Ladoo&mc=0000&mode=02&purpose=00" class="payment-btn">📱 PhonePe / GPay द्वारे थेट पैसे भरा</a>
+            
+            <p style="font-size:0.85rem; margin-top:8px; color:#666;">अधिकृत व्यवसाय युपीआय आयडी: **74472732@axl**</p>
+            
+            <div class="form-group" style="margin-top:15px; text-align:left;">
+                <label for="txnId" style="font-size:0.9rem;">पेमेंट युपीआय ट्रांजेक्शन आयडी (UPI Txn ID):</label>
+                <input type="text" id="txnId" placeholder="उदा. 4321XXXXXX" oninput="validatePayment()">
             </div>
         </div>
 
         <!-- Order Button -->
-        <button class="btn-whatsapp" onclick="sendWhatsAppOrder()">📱 व्हॉट्सॲपवर ऑर्डर करा (Order via WhatsApp)</button>
+        <button id="submitBtn" class="btn-submit" onclick="placeFinalOrder()" disabled>🔒 आधी पेमेंट पूर्ण करा (Submit Order)</button>
         
         <div class="footer-text">
-            पत्ता: अक्कलकोट | संपर्क: ७४४७२७३२२६ | Home Delivery Available
+            पत्ता: अक्कलकोट | संपर्क: ७४४७२७३२२६
         </div>
     </div>
 
     <script>
-        // Prices database updated as per latest corrections
         const priceList = {
             jaggery: { "1kg": 349, "500g": 189, "250g": 99 },
             sugar:   { "1kg": 339, "500g": 169, "250g": 89 },
@@ -261,33 +195,15 @@
             dryfruit:{ "1kg": 549, "500g": 299, "250g": 169 }
         };
 
+        let currentGrandTotal = 0;
+
         function calculateBill() {
             const ladooType = document.getElementById('ladooType').value;
-            const weight = document.querySelector('input[name="weight"]:checked').value;
+            const weightElement = document.querySelector('input[name="weight"]:checked');
+            const weight = weightElement ? weightElement.value : "500g";
             const quantity = parseInt(document.getElementById('quantity').value) || 1;
             const location = document.getElementById('deliveryLocation').value;
 
-            // 1. Get Rate
             const rate = priceList[ladooType][weight];
-            
-            // 2. Calculations
             const itemsTotal = rate * quantity;
             
-            let shipping = 0;
-            if (location === 'maharashtra') shipping = 60;
-            if (location === 'outside') shipping = 120;
-            
-            const grandTotal = itemsTotal + shipping;
-
-            // 3. Update Display UI
-            document.getElementById('ratePerBox').innerText = "₹ " + rate;
-            document.getElementById('itemsTotal').innerText = "₹ " + itemsTotal;
-            document.getElementById('shippingCost').innerText = "₹ " + shipping;
-            document.getElementById('grandTotal').innerText = "₹ " + grandTotal;
-        }
-
-        function sendWhatsAppOrder() {
-            const ladooSelect = document.getElementById('ladooType');
-            const ladooName = ladooSelect.options[ladooSelect.selectedIndex].text;
-            const weight = document.querySelector('input[name="weight"]:checked').value;
-            const quantity = document.getElementById('quantity').value;
