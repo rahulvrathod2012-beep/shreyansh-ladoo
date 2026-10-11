@@ -83,7 +83,7 @@
 
     <div class="container">
         <div id="successMessage" class="success-box">
-            ✅ तुमची ऑर्डर यशस्वीरित्या नोंदवली गेली आहे! (Order Placed!) <br>
+            ✅ तुमची ऑर्डर यशस्वीरित्या नोंदवली गेली आहे! <br>
             बिल पडताळणीसाठी व्हॉट्सॲपवर अंतिम तपशील पाठवले जात आहेत...
         </div>
 
@@ -136,8 +136,8 @@
             <label for="deliveryLocation">४. डिलिव्हरी कुठे हवी आहे? (Location):</label>
             <select id="deliveryLocation" onchange="calculateBill()">
                 <option value="local">📍 अक्कलकोट स्थानिक (Free Delivery)</option>
-                <option value="maharashtra">🚚 महाराष्ट्र अंतर्गत (₹६० कुरिअर充)</option>
-                <option value="outside">✈️ महाराष्ट्राबाहेर इतर राज्ये (₹१२० कुरिअर)</option>
+                <option value="maharashtra">🚚 महाराष्ट्र अंतर्गत (₹६० कुरिअर चार्ज)</option>
+                <option value="outside">✈️ महाराष्ट्राबाहेर इतर राज्ये (₹१२० कुरिअर चार्ज)</option>
             </select>
         </div>
 
@@ -166,7 +166,6 @@
             <h3 style="margin:0; color:#5f259f;">🟣 ५. ऑनलाईन पेमेंट (Pay to Shreyansh Ladoo)</h3>
             <p style="font-size:0.9rem; margin:8px 0;">ऑर्डर निश्चित करण्यासाठी खालील बटणावर क्लिक करून PhonePe/GPay द्वारे पैसे भरा आणि **Transaction ID** खाली टाका.</p>
             
-            <!-- Secure Direct UPI Link with dynamically calculated amount -->
             <a id="upiLink" href="upi://pay?pa=74472732@axl&pn=Shreyansh%20Ladoo&mc=0000&mode=02&purpose=00" class="payment-btn">📱 PhonePe / GPay द्वारे थेट पैसे भरा</a>
             
             <p style="font-size:0.85rem; margin-top:8px; color:#666;">अधिकृत व्यवसाय युपीआय आयडी: **74472732@axl**</p>
@@ -178,7 +177,7 @@
         </div>
 
         <!-- Order Button -->
-        <button id="submitBtn" class="btn-submit" onclick="placeFinalOrder()" disabled>🔒 आधी पेमेंट पूर्ण करा (Submit Order)</button>
+        <button id="submitBtn" class="btn-submit" onclick="placeFinalOrder()" disabled>🔒 आधी पेमेंट पूर्ण करा (Place Order)</button>
         
         <div class="footer-text">
             पत्ता: अक्कलकोट | संपर्क: ७४४७२७३२२६
@@ -207,3 +206,6 @@
             const rate = priceList[ladooType][weight];
             const itemsTotal = rate * quantity;
             
+            let shipping = 0;
+            if (location === 'maharashtra') shipping = 60;
+        
